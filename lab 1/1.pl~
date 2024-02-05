@@ -57,7 +57,9 @@ mother(X,Y):- woman(X), parent(X,Y).
 mother(X):- mother(Y,X), print(Y), nl, fail.
 
 brother(X,Y):- man(X),X\=Y, parent(Z,X), parent(C,Y), Z=C.
-brothers(X):- parent(Y,X), parent(Y,Z), man(Z), Z\=X, print(Z), nl, false.
+brothers(X):- mother(Y,X), parent(Y,Z), man(Z), Z\=X, print(Z), nl, false.
+
+b_s(X,Y):- X\=Y, parent(Z,X), parent(C,Y), Z=C.
 
 max(X,Y,Z):-(
      X>=Y -> Z is X;
