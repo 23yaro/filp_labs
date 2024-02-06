@@ -62,25 +62,6 @@ problem(paper_jam) :-
 problem(out_of_paper) :-
     query('Is there out-of- paper error during printing').
 
-/*new questions*/
-problem(acc_blocked) :-
-    query('Is your account blocked?').
-
-problem(network_connection) :-
-    query('You are not connected to the network?').
-
-problem(account) :-
-    query('Can t log into your account?').
-
-/*New problem with addition questions*/
-fault(blocked_problem):-
-    problem(account),
-    problem(acc_blocked).
-
-fault(connection_problem):-
-    problem(account),
-    problem(network_connection).
-
 /*New problem without addition questions*/
 fault(beeper_problem) :-
     problem(repeating_short_beeps),
