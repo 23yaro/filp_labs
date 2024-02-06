@@ -71,8 +71,7 @@ grand_pas(X):- grand_pa(Y,X), print(Y), nl, false.
 grand_pa_and_da(X,Y):- grand_pa(X,Y),woman(Y);grand_pa(Y,X),woman(X).
 
 /*проверка на тётю через дедушку племяника(цы)*/
-aunt(X,Y):- woman(X), not(parent(X,Y)), grand_pa(Z,Y), parent(Z,X).
-aunts(X):- aunt(Y,X), print(Y), nl, false.
+aunt(X,Y):- woman(X),not(parent(X,Y)), grand_pa(Z,Y), parent(Z,X).
 
 b_s(X,Y):- X\=Y, parent(Z,X), parent(C,Y), Z=C.
 b_s(X):- mother(Y,X), parent(Y,Z), Z\=X, print(Z), nl, false.
