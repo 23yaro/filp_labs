@@ -74,6 +74,16 @@ grand_pa_and_da(X,Y):- grand_pa(X,Y),woman(Y);grand_pa(Y,X),woman(X).
 aunt(X,Y):- woman(X), not(parent(X,Y)), grand_pa(Z,Y), parent(Z,X).
 aunts(X):- aunt(Y,X), print(Y), nl, false.
 
+/*Only FDB ->*/
+grand_pa_f(X, Y):- man(X), parent(Z,Y), parent(X,Z).
+grand_pas_f(X):- man(Y), parent(Z,X), parent(Y,Z), print(Y), nl, false.
+grand_pa_and_da_f(X,Y):- man(X), parent(Z,Y), parent(X,Z),woman(Y); man(Y), parent(Z,X), parent(Y,Z), woman(X).
+
+aunt_f(X,Y):- woman(X), not(parent(X,Y)), man(Z), parent(C,Y), parent(Z,C), parent(Z,X).
+aunts_f(X):- woman(Y), not(parent(Y,X)), man(Z), parent(C,X), parent(Z,C), parent(Z,Y), print(Y), nl, false.
+/*.*/
+
+
 b_s(X,Y):- X\=Y, parent(Z,X), parent(C,Y), Z=C.
 b_s(X):- mother(Y,X), parent(Y,Z), Z\=X, print(Z), nl, false.
 
