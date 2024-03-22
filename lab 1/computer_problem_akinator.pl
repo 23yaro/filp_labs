@@ -62,12 +62,6 @@ problem(paper_jam) :-
 problem(out_of_paper) :-
     query('Is there out-of- paper error during printing').
 
-/*New problem without addition questions*/
-fault(beeper_problem) :-
-    problem(repeating_short_beeps),
-    problem(long_beep),
-    problem(continuous_beeps).
-
 fault(power_supply) :-
     problem(repeating_short_beeps),
     problem(continuous_beeps),
@@ -111,6 +105,45 @@ fault(paper) :-
     problem(not_printing),
     problem(paper_jam),
     problem(out_of_paper).
+
+%Добавление ошибок,без добавления новых вопросов
+
+fault(beeper_problem) :-
+    problem(repeating_short_beeps),
+    problem(long_beep),
+    problem(continuous_beeps).
+
+fault(display_connection) :-
+    problem(no_beep),
+    problem(blank_display),
+    not(problem(long_beep)),
+    not(problem(continuous_beeps)).
+	
+%Добавление ошибок с добавленем новых вопросов
+fault(cooling) :-
+    problem(overheating),
+    not(problem(blank_display)),
+    not(problem(repeating_short_beeps)).
+   
+
+fault(graphics_card) :-
+    problem(graphics_driver),
+    not(problem(long_beep)),
+    not(problem(continuous_beeps)).
+
+fault(operating_system) :-
+    problem(operatinon_system),
+    not(problem(blank_display)),
+    not(problem(disc_format)).
+
+
+% Новые вопросы
+problem(operatinon_system):-
+	query('Computer reports corrupt  operating system?').
+problem(overheating):-
+	query('Computer is overheating?').
+problem(graphics_driver):-
+	query('Problems with video?').
 
 
 query(Prompt) :-
