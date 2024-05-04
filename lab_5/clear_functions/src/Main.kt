@@ -1,5 +1,5 @@
 class Cycle {
-    fun operation(n: Int, f: (Int) -> (Int)) = f(n)
+    fun operation(n: Int, f: (Int)->(Int)) = f(n)
     fun nodOperation(a: Int, b: Int, f: (Int, Int) -> (Int)) = f(a, b)
 
     //Функция находит максимальную цифру числа.
@@ -20,7 +20,7 @@ class Cycle {
 
     //Функция находит минимальную нечетную цифру числа.
     fun minDigit(number: Int): Int {
-        var minDigit = 0
+        var minDigit = number
         var num = number
 
         while (num != 0) {
@@ -53,34 +53,34 @@ class RecUp {
     fun operation(n: Int, f: (Int) -> (Int)) = f(n)
     fun nodOperation(a: Int, b: Int, f: (Int, Int) -> (Int)) = f(a, b)
 
-    fun findGCD(a: Int, b: Int): Int {
+    fun nod(a: Int, b: Int): Int {
         return if (b == 0) {
             a
         } else {
-            findGCD(b, a % b)
+            nod(b, a % b)
         }
     }
 
-    fun findMaxDigit(number: Int): Int {
+    fun maxDigit(number: Int): Int {
         if (number < 10) {
             return number
         }
 
-        val maxRest = findMaxDigit(number / 10)
+        val maxRest = maxDigit(number / 10)
         val lastDigit = number % 10
 
         return maxOf(maxRest, lastDigit)
     }
 
-    fun findMinDigit(number: Int): Int {
+    fun minDigit(number: Int): Int {
         if (number < 10) {
             return number
         }
 
-        val minRest = findMinDigit(number / 10)
+        val minRest = minDigit(number / 10)
         val lastDigit = number % 10
 
-        return maxOf(minRest, lastDigit)
+        return minOf(minRest, lastDigit)
     }
 
 }
@@ -90,11 +90,11 @@ class RecDown {
     fun nodOperation(a: Int, b: Int, f: (Int, Int) -> (Int)) = f(a, b)
 
 
-    fun findGCD(a: Int, b: Int): Int {
+    fun nod(a: Int, b: Int): Int {
         return if (b == 0) {
             a
         } else {
-            findGCD(b, a % b)
+            nod(b, a % b)
         }
     }
 
@@ -119,7 +119,7 @@ class RecDown {
         val remainingDigits = number / 10
         val minInRemaining = minDigit(remainingDigits)
 
-        return if (lastDigit < minInRemaining) lastDigit else minInRemaining
+        return if (lastDigit > minInRemaining) lastDigit else minInRemaining
     }
 
 }
