@@ -1,4 +1,7 @@
 class Cycle {
+    fun operation(n: Int, f: (Int) -> (Int)) = f(n)
+    fun nodOperation(a: Int, b: Int, f: (Int, Int) -> (Int)) = f(a, b)
+
     //Функция находит максимальную цифру числа.
     fun maxDigit(number: Int): Int {
         var maxDigit = 0
@@ -30,6 +33,7 @@ class Cycle {
 
         return minDigit
     }
+
     //Функция находит НОД двух чисел.
     fun nod(a: Int, b: Int): Int {
         var num1 = a
@@ -45,7 +49,10 @@ class Cycle {
     }
 }
 
-class recUp{
+class RecUp {
+    fun operation(n: Int, f: (Int) -> (Int)) = f(n)
+    fun nodOperation(a: Int, b: Int, f: (Int, Int) -> (Int)) = f(a, b)
+
     fun findGCD(a: Int, b: Int): Int {
         return if (b == 0) {
             a
@@ -78,7 +85,11 @@ class recUp{
 
 }
 
-class recDown{
+class RecDown {
+    fun operation(n: Int, f: (Int) -> (Int)) = f(n)
+    fun nodOperation(a: Int, b: Int, f: (Int, Int) -> (Int)) = f(a, b)
+
+
     fun findGCD(a: Int, b: Int): Int {
         return if (b == 0) {
             a
@@ -98,6 +109,7 @@ class recDown{
 
         return if (lastDigit > maxInRemaining) lastDigit else maxInRemaining
     }
+
     fun minDigit(number: Int): Int {
         if (number < 10) {
             return number
@@ -111,3 +123,4 @@ class recDown{
     }
 
 }
+
