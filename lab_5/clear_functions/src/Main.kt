@@ -1,10 +1,4 @@
-fun main() = Main().main()
-
-class Main {
-    fun main() {
-        println(nod(12,6))
-    }
-
+class Cycle {
     //Функция находит максимальную цифру числа.
     fun maxDigit(number: Int): Int {
         var maxDigit = 0
@@ -49,4 +43,71 @@ class Main {
 
         return num1
     }
+}
+
+class recUp{
+    fun findGCD(a: Int, b: Int): Int {
+        return if (b == 0) {
+            a
+        } else {
+            findGCD(b, a % b)
+        }
+    }
+
+    fun findMaxDigit(number: Int): Int {
+        if (number < 10) {
+            return number
+        }
+
+        val maxRest = findMaxDigit(number / 10)
+        val lastDigit = number % 10
+
+        return maxOf(maxRest, lastDigit)
+    }
+
+    fun findMinDigit(number: Int): Int {
+        if (number < 10) {
+            return number
+        }
+
+        val minRest = findMinDigit(number / 10)
+        val lastDigit = number % 10
+
+        return maxOf(minRest, lastDigit)
+    }
+
+}
+
+class recDown{
+    fun findGCD(a: Int, b: Int): Int {
+        return if (b == 0) {
+            a
+        } else {
+            findGCD(b, a % b)
+        }
+    }
+
+    fun maxDigit(number: Int): Int {
+        if (number < 10) {
+            return number
+        }
+
+        val lastDigit = number % 10
+        val remainingDigits = number / 10
+        val maxInRemaining = maxDigit(remainingDigits)
+
+        return if (lastDigit > maxInRemaining) lastDigit else maxInRemaining
+    }
+    fun minDigit(number: Int): Int {
+        if (number < 10) {
+            return number
+        }
+
+        val lastDigit = number % 10
+        val remainingDigits = number / 10
+        val minInRemaining = minDigit(remainingDigits)
+
+        return if (lastDigit < minInRemaining) lastDigit else minInRemaining
+    }
+
 }
