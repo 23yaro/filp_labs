@@ -1,6 +1,15 @@
-% Запустить акинатор
-start :-
-    main.
+:- dynamic asked/2
+
+% Марки автомобилей
+car(kia, [reliability-yes, safety-no, economical-yes, family-yes, popular-no, quality-no]).
+car(opel, [reliability-yes, safety-no, economical-yes, family-yes, popular-no, quality-yes]).
+car(mercedes, [reliability-yes, safety-yes, economical-no, family-no, popular-no, quality-no]).
+car(toyota, [reliability-yes, safety-yes, economical-yes, family-no, popular-no, quality-no]).
+car(vaz, [reliability-yes, safety-no, economical-yes, family-yes, popular-yes, quality-no]).
+car(bwm, [reliability-no, safety-yes, economical-no, family-no, popular-yes, quality-no]).
+car(honda, [reliability-no, safety-yes, economical-yes, family-no, popular-no, quality-no]).
+
+
 
 main :-
 	% очистка1
@@ -11,16 +20,6 @@ main :-
 	% вывод результата
     res(Result),
 	% очистка2
-    retractall(asked(_, _)).
-	
-% Марки автомобилей
-car(kia, [reliability-yes, safety-no, economical-yes, family-yes, popular-no, quality-no]).
-car(opel, [reliability-yes, safety-no, economical-yes, family-yes, popular-no, quality-yes]).
-car(mercedes, [reliability-yes, safety-yes, economical-no, family-no, popular-no, quality-no]).
-car(toyota, [reliability-yes, safety-yes, economical-yes, family-no, popular-no, quality-no]).
-car(vaz, [reliability-yes, safety-no, economical-yes, family-yes, popular-yes, quality-no]).
-car(bwm, [reliability-no, safety-yes, economical-no, family-no, popular-yes, quality-no]).
-car(honda, [reliability-no, safety-yes, economical-yes, family-no, popular-no, quality-no]).
 
 % Вопросы для определения марки автомобиля
 question(reliability, 'Reliable car?').
@@ -94,3 +93,6 @@ can_ask_more :-
     question(Fact, _),
     not(asked(Fact, _)),
     !.
+	
+start :-
+    main.
