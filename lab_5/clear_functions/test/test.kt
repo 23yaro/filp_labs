@@ -1,25 +1,26 @@
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.*
+import kotlin.reflect.KFunction
 
 internal class MainKtTest {
 
     @Test
     fun maxDigitCycle() {
-        val main = Cycle()
+        val main = Main()
         val expected = 3
         assertEquals(expected, main.operation(1232, main::maxDigit))
     }
 
     @Test
     fun minDigitCycle() {
-        val main = Cycle()
+        val main = Main()
         val expected = 1
         assertEquals(expected, main.operation(1232, main::minDigit))
     }
 
     @Test
     fun nodCycle() {
-        val main = Cycle()
+        val main = Main()
         val expected = 6
         assertEquals(expected, main.nodOperation(12, 6, main::nod))
     }
@@ -47,22 +48,24 @@ internal class MainKtTest {
 
     @Test
     fun maxDigitDown() {
-        val main = Cycle()
+        val main = Main()
         val expected = 3
         assertEquals(expected, main.operation(1232, main::maxDigit))
     }
 
     @Test
     fun minDigitDown() {
-        val main = Cycle()
+        val main = Main()
         val expected = 1
         assertEquals(expected, main.operation(1232, main::minDigit))
     }
 
     @Test
     fun nodDown() {
-        val main = Cycle()
+        val main = Main()
         val expected = 6
         assertEquals(expected, main.nodOperation(12, 6, main::nod))
     }
+
+
 }

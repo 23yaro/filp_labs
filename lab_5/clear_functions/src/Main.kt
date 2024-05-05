@@ -1,5 +1,58 @@
-class Cycle {
-    fun operation(n: Int, f: (Int)->(Int)) = f(n)
+import java.io.File
+
+fun main() = Main().main("C:\\Users\\wqeqewqwe\\Desktop\\filp_labs\\lab_5\\clear_functions\\test\\test.txt")
+class Main {
+    fun main(route: String) {
+        if (route.isEmpty()) {
+            println("Необходимо передать путь к файлу в качестве аргумента программы")
+            return
+        }
+
+        val inputFile = File(route)
+        if (!inputFile.exists()) {
+            println("Файл не найден")
+            return
+        }
+
+        val outputLines = mutableListOf<String>()
+
+        inputFile.forEachLine { line ->
+            val parts = line.split(" ")
+            if (parts.size > 3 || parts.size < 2) {
+                outputLines.add("Ошибка: неверная структура файла - $line")
+                return@forEachLine
+            }
+
+            val number1 = parts[0].toIntOrNull()
+            if (number1 == null){
+                outputLines.add("Ошибка: неверная структура файла")
+                return@forEachLine
+            }
+            val number2 = parts[1]
+            val functionName = parts[1]
+
+            val result = when (functionName) {
+                "maxDigit" -> maxDigit(number1.toInt())
+                "minDigit" -> minDigit(number1.toInt())
+                "nod" -> nod(number1.toInt(), number2.toInt())
+                else -> {
+                    "Ошибка: неизвестная функция - $functionName"
+                }
+            }
+
+            outputLines.add("$number1 $functionName $result")
+        }
+        if (outputLines.isEmpty()){
+            outputLines.add("Ошибка: неверная структура файла")
+        }
+        val outputFile = File("output.txt")
+        outputFile.writeText(outputLines.joinToString("\n"))
+
+        println("Результаты записаны в файл output.txt")
+    }
+
+    //Функции высшего порядка, принимает функцию и значение
+    fun operation(n: Int, f: (Int) -> (Int)) = f(n)
     fun nodOperation(a: Int, b: Int, f: (Int, Int) -> (Int)) = f(a, b)
 
     //Функция находит максимальную цифру числа.
