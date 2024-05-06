@@ -1,8 +1,61 @@
 import java.io.File
 
-fun main() = Main().main("C:\\Users\\wqeqewqwe\\Desktop\\filp_labs\\lab_5\\clear_functions\\test\\test.txt")
+fun main() = Main().functions("C:\\Users\\wqeqewqwe\\Desktop\\filp_labs\\lab_5\\clear_functions\\test\\test.txt")
 class Main {
-    fun main(route: String) {
+    
+    //Функция находит сумму всех делителей числа, взаимно простых с суммой цифр числа и не
+    //взаимно простых с произведением цифр числа.
+
+    fun divisorsSum(number: Int): Int {
+        var sum = 0
+        for (i in 1..number) {
+            if (number % i == 0 && isPrime(i, digitSum(number)) && !isPrime(i, digitMul(number))) {
+                sum += i
+            }
+        }
+        return sum
+    }
+
+
+    //Функция находит сумму чисел.
+    fun digitSum(number: Int): Int {
+        var sum = 0
+        var num = number
+        while (num != 0) {
+            sum += num % 10
+            num /= 10
+        }
+        return sum
+    }
+    //Функция находит произведение чисел.
+    fun digitMul(number: Int): Int {
+        var product = 1
+        var num = number
+        while (num != 0) {
+            product *= num % 10
+            num /= 10
+        }
+        return product
+    }
+
+    //Функция определяет простое число или нет
+    fun isPrime(a: Int, b: Int): Boolean {
+        return nod(a, b) == 1
+    }
+
+    //Функция находит количество делителей числа, не делящихся на 3
+    fun divisors(number: Int): Int {
+        var count = 0
+        for (i in 1..number) {
+            if (number % i == 0 && i % 3 != 0) {
+                count++
+            }
+        }
+        return count
+    }
+
+    //Читает данные из файла, выполняет соответствующие функции
+    fun functions(route: String) {
         if (route.isEmpty()) {
             println("Необходимо передать путь к файлу в качестве аргумента программы")
             return
@@ -35,6 +88,7 @@ class Main {
                 "maxDigit" -> maxDigit(number1.toInt())
                 "minDigit" -> minDigit(number1.toInt())
                 "nod" -> nod(number1.toInt(), number2.toInt())
+                "divisorsSum" -> divisorsSum(number1.toInt())
                 else -> {
                     "Ошибка: неизвестная функция - $functionName"
                 }

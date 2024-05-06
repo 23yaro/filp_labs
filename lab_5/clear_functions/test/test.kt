@@ -1,6 +1,5 @@
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.*
-import kotlin.reflect.KFunction
 
 internal class MainKtTest {
 
@@ -67,5 +66,17 @@ internal class MainKtTest {
         assertEquals(expected, main.nodOperation(12, 6, main::nod))
     }
 
+    @Test
+    fun div() {
+        val main = Main()
+        val expected = 3
+        assertEquals(expected, main.divisors(12))
+    }
+    @Test
+    fun divSum() {
+        val main = Main()
+        val expected = 6
+        assertEquals(expected, main.divisorsSum(36))
+    }
 
 }
