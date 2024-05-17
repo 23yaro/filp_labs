@@ -47,9 +47,55 @@ internal class MainKtTest {
     fun findElementsBetweenMax() {
         val main = ListConvert()
         val expected = listOf(5, 8, 2, 4)
-        assertEquals(expected, main.findElementsBetweenMax(intArrayOf(3, 8, 5, 8, 2, 4, 8)))
+        assertEquals(expected, main.findElementsBetween(intArrayOf(3, 8, 5, 8, 2, 4, 8)))
+    }
+    @Test
+    fun findAverageOfModuleValues() {
+        val main = ListConvert()
+        val expected = 5
+        assertEquals(expected, (main.findAverageOfModuleValues(intArrayOf(3, 8, 5, 8, 2, 4, 8))).toInt())
     }
 
+    @Test
+    fun sumOfElementsInRange() {
+        val main = ListConvert()
+        val expected = 18
+        assertEquals(expected, (main.sumOfElementsInRange(intArrayOf(1,2,3,4,5,6,7), 5, 7)).toInt())
+    }
+
+    @Test
+    fun findUniqueElements() {
+        val main = ListConvert()
+        val expected = listOf(3, 4)
+        assertEquals(expected, main.findUniqueElements(listOf(1,2,5,6,7), listOf(1,2,3,4,5,6,7)))
+    }
+
+    @Test
+    fun findSquaresOfRepeatedNumbers() {
+        val main = ListConvert()
+        val expected = listOf(4, 400)
+        assertEquals(expected, main.findSquaresOfRepeatedNumbers(listOf(1,2,2,2,2,2,2,2,22,2,2,20,20,20,20,20)))
+    }
+
+    @Test
+    fun listOfSumDigit() {
+        val main = ListConvert()
+        val expected = listOf(1, 2, 71, 3, 2, 3, 4, 9, 4, 86, 64)
+        assertEquals(expected, main.listOfSumDigit(listOf(1,2,4,71,9,4,3,2,86,64,3,)))
+    }
+    @Test
+    fun eList() {
+        val main = ListConvert()
+        val expected = listOf(Triple(4, 3, 4))
+        assertEquals(expected, main.eList(listOf(1,2,4,71,9,4,3,2,86,64,3,)))
+    }
+
+    @Test
+    fun findLongestSub() {
+        val main = ListConvert()
+        val expected = "CAB"
+        assertEquals(expected, main.findLongestSub("ABCBDAB", "DCAB"))
+    }
 
 
 }
