@@ -1,0 +1,3 @@
+36 divisorsSum
+1232 maxDigit
+1232 minDigit
