@@ -29,7 +29,50 @@ class ListConvert {
         }
     }
 
+    //Дан целочисленный массив и натуральный индекс (число, меньшее размера
+    //массива). Необходимо определить является ли элемент по указанному индексу
+    //глобальным минимумом.
+    fun isGlobalMin(arr: IntArray, index: Int): Boolean {
+        val minValue = arr.minOrNull() ?: return false
+        return arr[index] == minValue
+    }
 
+    //Дан целочисленный массив. Необходимо найти индексы двух наименьших
+    //элементов массива.
+    fun findTwoMinIndices(arr: IntArray): Pair<Int, Int> {
+        val smallestIndex = arr.indices.minByOrNull { arr[it] } ?: return Pair(-1, -1)
+        val secondSmallestIndex = arr.indices.minByOrNull { if (it == smallestIndex) Int.MAX_VALUE else arr[it] } ?: return Pair(-1, -1)
+        return Pair(smallestIndex, secondSmallestIndex)
+    }
 
+    //Дан целочисленный массив. Необходимо найти все пропущенные числа.
+    fun findMissingNumbers(arr: IntArray): List<Int> {
+        val fullRange = (arr.minOrNull() ?: 0)..(arr.maxOrNull() ?: 0)
+        return fullRange.filterNot { arr.contains(it) }
+    }
 
+    //Дан целочисленный массив. Найти количество чётных элементов.
+    fun countEvenNumbers(arr: IntArray): Int {
+        return arr.count { it % 2 == 0 }
+    }
+
+    //Дан целочисленный массив и интервал a..b. Необходимо найти количество
+    //элементов в этом интервале.
+    fun countElementsInInterval(arr: IntArray, a: Int, b: Int): Int {
+        return arr.count { it in a..b }
+    }
+
+    //Дан целочисленный массив. Необходимо найти элементы, расположенные
+    //между первым и последним максимальным.
+    fun findElementsBetweenMax(arr: IntArray): List<Int> {
+        val maxIndexFirst = arr.max().let { arr.indexOf(it) }
+        val maxIndexLast = arr.lastIndexOf(arr.max())
+
+        if (maxIndexFirst == maxIndexLast) return emptyList()
+
+        val startIndex = minOf(maxIndexFirst, maxIndexLast) + 1
+        val endIndex = maxOf(maxIndexFirst, maxIndexLast) - 1
+
+        return if (startIndex <= endIndex) arr.slice(startIndex..endIndex) else emptyList()
+    }
 }
