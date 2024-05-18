@@ -32,6 +32,7 @@ class VehiclePass(val series: String, val number: String, val issueDate: Date):
     }
 }
 
+
 fun main() {
     val doc1 = VehiclePass("AA", "123456", Date(2021, 10, 15))
     val doc2 = VehiclePass("BB", "654321", Date(2020, 5, 20))
